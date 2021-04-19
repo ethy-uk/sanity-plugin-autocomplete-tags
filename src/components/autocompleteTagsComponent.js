@@ -9,7 +9,9 @@ import React, {
 import CreatableSelect from "react-select/creatable"
 import PatchEvent, { set, unset } from "part:@sanity/form-builder/patch-event"
 import { withDocument } from "part:@sanity/form-builder"
-import client from "part:@sanity/base/client"
+import sanityClient from "part:@sanity/base/client"
+
+const client = sanityClient.withConfig({apiVersion: '2021-03-25'})
 
 const createPatchFrom = value =>
   PatchEvent.from(value === "" ? unset() : set(value))
